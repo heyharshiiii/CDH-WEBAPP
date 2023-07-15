@@ -53,37 +53,58 @@ class DesktopContent extends StatefulWidget {
 }
 
 class _DesktopContentState extends State<DesktopContent> {
+  List<bool> isHovered = []; // Declare isHovered as a member variable
+
+  @override
+  void initState() {
+    super.initState();
+    isHovered = List.generate(6, (index) => false);
+  }
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-          itemCount: demo_content.length,
-      
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,), 
-      
-          itemBuilder: (context,index){
-            return Padding(
-              padding: const EdgeInsets.all(defaultPadding),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+  ),
+  itemCount: 6, // Replace with your actual item count
+  itemBuilder: (BuildContext context, int index) {
+    return MouseRegion(
+      onHover: (event) {
+        // Handle hover event
+        // You can change the container's appearance here
+        setState(() {
+          // Example: Change the container's color when hovered
+          // Update the 'isHovered' variable based on hover event
+          isHovered[index] = true;
+        });
+      },
+      onExit: (event) {
+        // Handle when the mouse exits the container
+        setState(() {
+          // Example: Revert the container's color when not hovered
+          // Update the 'isHovered' variable based on exit event
+          isHovered[index] = false;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: isHovered[index] ? Colors.blue : Colors.white,
+          // Add your desired container styling here
+        ),
+        // Add your container content here
+      ),
+    );
+  },
+),
 
-              child: Container(
-               decoration: BoxDecoration(
-                color: Colors.white,
-               boxShadow: [
-                BoxShadow(blurRadius: 25,color: Colors.grey)
-               ] 
-               ),
-
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    demo_content[index].textt,
-                    SizedBox(height: 10,),
-                    Container(height:300,width:300,child: demo_content[index].img)
-                  ],
-                ),
-              ),
-            );
-          }
-      );
+            Text("2023")
+        ],
+      ),
+    );
   }
 }
 
