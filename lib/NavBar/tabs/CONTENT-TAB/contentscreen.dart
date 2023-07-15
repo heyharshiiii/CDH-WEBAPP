@@ -58,15 +58,13 @@ class _DesktopContentState extends State<DesktopContent> {
   @override
   void initState() {
     super.initState();
+    // Initialize isHovered list based on the number of items
+    // Assuming itemCount is known and equals 6
     isHovered = List.generate(6, (index) => false);
   }
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GridView.builder(
-            shrinkWrap: true,
+  return GridView.builder(
   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 3,
   ),
@@ -74,8 +72,7 @@ class _DesktopContentState extends State<DesktopContent> {
   itemBuilder: (BuildContext context, int index) {
     return MouseRegion(
       onHover: (event) {
-        // Handle hover event
-        // You can change the container's appearance here
+        print("object");
         setState(() {
           // Example: Change the container's color when hovered
           // Update the 'isHovered' variable based on hover event
@@ -90,21 +87,24 @@ class _DesktopContentState extends State<DesktopContent> {
           isHovered[index] = false;
         });
       },
-      child: Container(
+      child: 
+      
+      Container(
         decoration: BoxDecoration(
-          color: isHovered[index] ? Colors.blue : Colors.white,
-          // Add your desired container styling here
+          color: isHovered[index] ? Colors.pink: Colors.transparent
         ),
-        // Add your container content here
+        child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      demo_content[index].textt,
+                      SizedBox(height: 10,),
+                      Container(height:300,width:300,child: demo_content[index].img)
+                    ],
+                  ),
       ),
     );
   },
-),
-
-            Text("2023")
-        ],
-      ),
-    );
+);
   }
 }
 
