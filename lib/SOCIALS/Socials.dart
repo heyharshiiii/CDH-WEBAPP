@@ -10,6 +10,7 @@ class Socials extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      
       children: [
          Spacer(),
          IconButton(onPressed: _launchUrllinkedin,

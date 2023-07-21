@@ -1,9 +1,20 @@
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/Inclusion&Diversity.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/article.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/community.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/hackathons.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/openSource.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/placements-and-internships.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/scholarships.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/sessions.dart';
+import 'package:cdh2/NavBar/tabs/CONTENT-TAB/Each%20Grid%20Item%20Page/techBytes.dart';
 import 'package:cdh2/constants.dart';
+import 'package:cdh2/footer.dart';
 import 'package:cdh2/models/Content-Grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../responsive.dart';
+
 class ContentScreen extends StatefulWidget {
   const ContentScreen({super.key});
 
@@ -12,39 +23,27 @@ class ContentScreen extends StatefulWidget {
 }
 
 class _ContentScreenState extends State<ContentScreen> {
-   bool isHover=false;
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
-    // final currWidth=MediaQuery.of(context).size.width;
-    
     return Container(
-     child: LayoutBuilder(
-                    builder:((context, constraints) {
-                       if(Responsive.isMobile(context))
-                        {
-                          return MobileContent();
-                        }
-                        else if(Responsive.isTablet(context))
-                        {
-                              return TabletContent();
-                        }
-                        else {
-                          return DesktopContent();
-                         }
-                    }
-                    ),
-
-                    ),
-      );
-     
-
-
-           
-  
+      child: LayoutBuilder(
+        builder: ((context, constraints) {
+          if (Responsive.isMobile(context)) {
+            return MobileContent();
+          } else if (Responsive.isTablet(context)) {
+            return TabletContent();
+          } else {
+            return DesktopContent();
+          }
+        }),
+      ),
+    );
   }
 }
 
 /////////DESKTOP/////////////
+
 class DesktopContent extends StatefulWidget {
   DesktopContent({super.key});
 
@@ -57,54 +56,104 @@ class _DesktopContentState extends State<DesktopContent> {
 
   @override
   void initState() {
-    super.initState();
-    // Initialize isHovered list based on the number of items
-    // Assuming itemCount is known and equals 6
-    isHovered = List.generate(6, (index) => false);
+    isHovered = List.generate(9, (index) => false);
   }
+
   @override
   Widget build(BuildContext context) {
-  return GridView.builder(
-  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 3,
-  ),
-  itemCount: 6, // Replace with your actual item count
-  itemBuilder: (BuildContext context, int index) {
-    return MouseRegion(
-      onHover: (event) {
-        print("object");
-        setState(() {
-          // Example: Change the container's color when hovered
-          // Update the 'isHovered' variable based on hover event
-          isHovered[index] = true;
-        });
-      },
-      onExit: (event) {
-        // Handle when the mouse exits the container
-        setState(() {
-          // Example: Revert the container's color when not hovered
-          // Update the 'isHovered' variable based on exit event
-          isHovered[index] = false;
-        });
-      },
-      child: 
-      
-      Container(
-        decoration: BoxDecoration(
-          color: isHovered[index] ? Colors.pink: Colors.transparent
-        ),
-        child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      demo_content[index].textt,
-                      SizedBox(height: 10,),
-                      Container(height:300,width:300,child: demo_content[index].img)
-                    ],
+    final curWidth = MediaQuery.of(context).size.width;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+            ),
+            itemCount: demo_content.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {
+                 Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    switch (index){
+                      case 0:
+                        return Article();
+                      case 1:
+                        return InclusionAndDiversity();
+                      case 2:
+                      return Sessions();
+                      case 3:
+                      return Scholarships();
+                      case 4:
+                      return PlacementAndInternship();
+                      case 5:
+                      return Hackathons();
+                      case 6:
+                      return Community();
+                      case 7:
+                      return OpenSource();
+                      case 8:
+                      return TechBytes();
+                      default:
+                        return Container();
+                    } 
+                  }
+                 )
+                 );
+                
+                
+                },
+                child: MouseRegion(
+                  onHover: (event) {
+                    setState(() {
+                      isHovered[index] = true;
+                    });
+                  },
+                  onExit: (event) {
+                    setState(() {
+                      isHovered[index] = false;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Container(
+                      decoration: isHovered[index]
+                          ? BoxDecoration(
+                              gradient: cardcolor,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(blurRadius: 25, color: Colors.grey)
+                              ],
+                            )
+                          : BoxDecoration(color: Colors.white, boxShadow: [
+                              BoxShadow(blurRadius: 25, color: Colors.grey)
+                            ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          demo_content[index].textt,
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                              height: 300,
+                              width: 300,
+                              child: demo_content[index].img)
+                        ],
+                      ),
+                    ),
                   ),
+                ),
+              );
+            },
+          ),
+          Footer()
+        ],
       ),
     );
-  },
-);
   }
 }
 
@@ -117,40 +166,75 @@ class TabletContent extends StatefulWidget {
 }
 
 class _TabletContentState extends State<TabletContent> {
+  List<bool> isHovered = []; // Declare isHovered as a member variable
+
+  @override
+  void initState() {
+    isHovered = List.generate(9, (index) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
-   return GridView.builder(
-          itemCount: demo_content.length,
-      
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,), 
-      
-          itemBuilder: (context,index){
-            return Padding(
-              padding: const EdgeInsets.all(defaultPadding/2),
-
-              child: Container(
-               decoration: BoxDecoration(
-                color: Colors.white,
-               boxShadow: [
-                BoxShadow(blurRadius: 20,color: Colors.grey)
-               ] 
-               ),
-
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    demo_content[index].textt,
-                    SizedBox(height: 10,),
-                    Container(height:200,width:200,child: demo_content[index].img)
-                  ],
+    final curWidth = MediaQuery.of(context).size.width;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: 9,
+            itemBuilder: (BuildContext context, int index) {
+              return MouseRegion(
+                onHover: (event) {
+                  setState(() {
+                    isHovered[index] = true;
+                  });
+                },
+                onExit: (event) {
+                  setState(() {
+                    isHovered[index] = false;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(defaultPadding / 2),
+                  child: Container(
+                    decoration: isHovered[index]
+                        ? BoxDecoration(
+                            gradient: cardcolor,
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(blurRadius: 25, color: Colors.grey)
+                            ],
+                          )
+                        : BoxDecoration(color: Colors.white, boxShadow: [
+                            BoxShadow(blurRadius: 25, color: Colors.grey)
+                          ]),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        demo_content[index].textt,
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                            height: 200,
+                            width: 200,
+                            child: demo_content[index].img)
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            );
-          }
-      );
+              );
+            },
+          ),
+          Footer()
+        ],
+      ),
+    );
   }
 }
-
 
 //////MOBILE//////////////
 class MobileContent extends StatefulWidget {
@@ -161,36 +245,72 @@ class MobileContent extends StatefulWidget {
 }
 
 class _MobileContentState extends State<MobileContent> {
+  List<bool> isHovered = []; // Declare isHovered as a member variable
+
+  @override
+  void initState() {
+    isHovered = List.generate(9, (index) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
-   return GridView.builder(
-          itemCount: demo_content.length,
-      
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,), 
-      
-          itemBuilder: (context,index){
-            return Padding(
-              padding: const EdgeInsets.all(defaultPadding/2),
-
-              child: Container(
-               decoration: BoxDecoration(
-                color: Colors.white,
-               boxShadow: [
-                BoxShadow(blurRadius: 20,color: Colors.grey)
-               ] 
-               ),
-
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    demo_content[index].textt,
-                    SizedBox(height: 10,),
-                    Container(height:200,width:200,child: demo_content[index].img)
-                  ],
+    final curWidth = MediaQuery.of(context).size.width;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: 9,
+            itemBuilder: (BuildContext context, int index) {
+              return MouseRegion(
+                onHover: (event) {
+                  setState(() {
+                    isHovered[index] = true;
+                  });
+                },
+                onExit: (event) {
+                  setState(() {
+                    isHovered[index] = false;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(defaultPadding / 4),
+                  child: Container(
+                    decoration: isHovered[index]
+                        ? BoxDecoration(
+                            gradient: cardcolor,
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(blurRadius: 25, color: Colors.grey)
+                            ],
+                          )
+                        : BoxDecoration(color: Colors.white, boxShadow: [
+                            BoxShadow(blurRadius: 25, color: Colors.grey)
+                          ]),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        demo_content[index].textt,
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                            height: 100,
+                            width: 100,
+                            child: demo_content[index].img)
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            );
-          }
-      );
+              );
+            },
+          ),
+          Footer()
+        ],
+      ),
+    );
   }
 }

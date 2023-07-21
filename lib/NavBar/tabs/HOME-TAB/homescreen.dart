@@ -1,5 +1,7 @@
 
+import 'package:cdh2/NavBar/tabs/HOME-TAB/slider.dart';
 import 'package:cdh2/SOCIALS/container-social.dart';
+import 'package:cdh2/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../unused/cdh_nav_bar.dart';
@@ -20,6 +22,7 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+    final curHeight=MediaQuery.of(context).size.height;
       final curWidth=MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
@@ -128,18 +131,24 @@ class _HomescreenState extends State<Homescreen> {
                           )
                           ) 
                       ),
+                       SizedBox(height: 10,),
                        Container(
-                        height: 100,width: curWidth,
-                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Container(height:50, width:curWidth,child:Center(child: Text("\u00a9 CDH,2023. All rights reserved.",style: Theme.of(context).textTheme.titleMedium!.copyWith(color:darkColor,fontWeight: FontWeight.w300),))),
-                           //  SizedBox(height: 5,),
-                            Container(child:Text("📌 Bhubaneshwar,Odisha. India."),)
-                           ],
-                         ),
-                       ),
-
+                       child:  ShaderMask(
+                       shaderCallback: (Rect rect){
+                        return graddd.createShader(rect);
+                         },
+                          child: Text("Some Motivation !",
+                          style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 2.0
+                    ),
+                        ),
+                    ),
+                  ),
+                   SizedBox(height: 15,),
+                     SliderScreen(),
+                       Footer()
                 ] 
             )
                  ),

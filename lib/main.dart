@@ -23,6 +23,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        useMaterial3: true,
+        primaryColor: kPrimaryColor,
         textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme)
             .apply(
               bodyColor: Colors.white
@@ -33,7 +35,7 @@ class _MyAppState extends State<MyApp> {
             ),
       ),
       debugShowCheckedModeBanner: false,
-      home: MyTabBar (),
+      home:MyTabBar (),
     );
   }
 }
