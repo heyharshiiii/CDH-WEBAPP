@@ -85,27 +85,7 @@ class _MyTabBarState extends State<MyTabBar> {
 
 
 
-class MobileSmallTabbar extends StatelessWidget {
-  const MobileSmallTabbar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return  TabBar(
-                    labelColor: Colors.white,
-                    labelStyle: fontTabBar3,
-                    unselectedLabelColor: Colors.white38,
-                    indicatorColor: Colors.white,
-                    tabs: 
-                  [
-                     Tab(text: 'HOME',),
-                      Tab(text: 'CONTENT'),
-                      Tab(text: 'WRITES',),
-                      Tab(text: 'TEAMS'),
-                      Tab(text: 'CONTACT',)
-                  ]
-                  );
-  }
-}
 //////For Mobile//////
 class MobileTabBar extends StatelessWidget {
   const MobileTabBar({super.key});
@@ -129,6 +109,7 @@ class MobileTabBar extends StatelessWidget {
   }
 }
 
+
 class DesktopTabbar extends StatelessWidget {
   const DesktopTabbar({super.key});
 
@@ -151,3 +132,24 @@ class DesktopTabbar extends StatelessWidget {
   }
 }
 
+class MobileSmallTabbar extends StatelessWidget {
+  const MobileSmallTabbar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  TabBar(
+                    labelColor: Colors.white,
+                    labelStyle: fontTabBar3,
+                    unselectedLabelColor: Colors.white38,
+                    indicatorColor: Colors.white,
+                    tabs: 
+                  [
+                     Tab(text: 'HOME',),
+                      Tab(text: 'CONTENT'),
+                      Tab(text: 'WRITES',),
+                      Tab(text: 'TEAMS'),
+                      Tab(text: 'CONTACT',)
+                  ]
+                  );
+  }
+}

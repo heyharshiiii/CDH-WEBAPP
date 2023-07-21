@@ -2,6 +2,7 @@ import 'package:cdh2/NavBar/tabs/TEAMS-TAB/imageClass.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
+import '../../../../responsive.dart';
 
 class LeadershipContainer extends StatefulWidget {
   const LeadershipContainer({super.key});
@@ -11,6 +12,33 @@ class LeadershipContainer extends StatefulWidget {
 }
 
 class _LeadershipContainerState extends State<LeadershipContainer> {
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return LayoutBuilder(
+        builder: (context,constraints){
+          if(Responsive.isMobile(context))
+          {
+            return leadersMobile();
+          }
+          else {
+            return leadersDesktop();
+          }
+        }
+  );
+  }
+}
+
+
+
+class leadersDesktop extends StatefulWidget {
+  const leadersDesktop({super.key});
+
+  @override
+  State<leadersDesktop> createState() => _leadersDesktopState();
+}
+
+class _leadersDesktopState extends State<leadersDesktop> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -73,5 +101,80 @@ class _LeadershipContainerState extends State<LeadershipContainer> {
         ),
       ),
     );
+  }
+}
+class leadersMobile extends StatefulWidget {
+  const leadersMobile({super.key});
+
+  @override
+  State<leadersMobile> createState() => _leadersMobileState();
+}
+
+class _leadersMobileState extends State<leadersMobile> {
+  @override
+  Widget build(BuildContext context) {
+     var screenSize = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        height: screenSize.height*0.9,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: cardColor2,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("LEADERSHIP",style: contentTitle.copyWith(color: Colors.white,fontSize: 30),),
+            Text("The Captains Of Our Ship",style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white60),),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              color: Colors.transparent,
+              child: Column(children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 80,
+                ),
+                Text("Scarlett Johnshon",style: teamFontName,),
+                Text("Faculty Advisor",style: teamFontJob,)
+              ]),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            GridView.builder(
+              physics: ScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemCount: leadership.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        color: Colors.transparent,
+                        child: Column(children: [
+                          leadershipMobile[index].img,
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          leadershipMobile[index].name,
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          leadershipMobile[index].job,
+                           
+                          
+                        ]),
+                      )
+                    ],
+                  );
+                })
+          ],
+        ),
+      ),
+    );;
   }
 }

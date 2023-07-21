@@ -9,6 +9,7 @@ import 'package:cdh2/constants.dart';
 import 'package:fancy_containers/fancy_containers.dart';
 import 'home-card.dart';
 import 'intro-and-team.dart';
+import 'learnFromExp.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -77,76 +78,10 @@ class _HomescreenState extends State<Homescreen> {
                    Container(width: double.infinity,
                    child: Padding(
                      padding: const EdgeInsets.all(defaultPadding),
-                     child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children:[
-                           Center(  
-                                  child: const FancyContainer(  
-                                    height: 150,
-                                    width: 300,
-                                    title: "Learn From Experience.", 
-                                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
-                                    textColor: Colors.black,
-                                    subtitleColor: Colors.white,
-                                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
-                                    padding: EdgeInsets.all(12),
-                                    color1: Color.fromARGB(255, 217, 189, 244),  
-                                    color2: Color.fromARGB(255, 183, 232, 255),    
-                                    subtitle: "The wise words from experienced tech-leads\nbrought just for you!"
-                                  ),  
-                                ),  
-
-                              Center(  
-                                  child: const FancyContainer(  
-                                    height: 150,
-                                    width: 300,
-                                    title: "Know Latest Opportunities", 
-                                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
-                                    textColor: Colors.white,
-                                    subtitleColor: Colors.white,
-                                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
-                                    padding: EdgeInsets.all(12),
-                                   color1: Color.fromARGB(255, 217, 189, 244),  
-                                    color2: Color.fromARGB(255, 183, 232, 255),    
-                                    subtitle: "Never miss a chance to get the latest updates for opportunities! "
-                                  ),  
-                                ),  
-
-                               Center(  
-                                  child: const FancyContainer(  
-                                    height: 150,
-                                    width: 300,
-                                    title: "Learn With Tech Tuesdays", 
-                                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
-                                    textColor: Colors.white,
-                                    subtitleColor: Colors.white,
-                                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
-                                    padding: EdgeInsets.all(12),
-                                    color1: Color.fromARGB(255, 217, 189, 244),  
-                                    color2: Color.fromARGB(255, 183, 232, 255),  
-                                    subtitle: "Every tuesday we bring you the lastest buzz from the world of technology! "
-                                  ),  
-                                ),       
-                                ]
-                          )
+                     child: LearnFromExp()
                           ) 
                       ),
                        SizedBox(height: 10,),
-                       Container(
-                       child:  ShaderMask(
-                       shaderCallback: (Rect rect){
-                        return graddd.createShader(rect);
-                         },
-                          child: Text("Some Motivation !",
-                          style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 2.0
-                    ),
-                        ),
-                    ),
-                  ),
-                   SizedBox(height: 15,),
                      SliderScreen(),
                        Footer()
                 ] 
@@ -163,4 +98,3 @@ class _HomescreenState extends State<Homescreen> {
 
   }
 }
-

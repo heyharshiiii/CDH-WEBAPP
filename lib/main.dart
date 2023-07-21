@@ -1,4 +1,5 @@
 import 'package:cdh2/NavBar/tabs/CONTENT-TAB/contentscreen.dart';
+
 import 'package:cdh2/unused/cdh_nav_bar.dart';
 import 'package:cdh2/splashscreen.dart';
 import 'package:cdh2/tab-screen.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
             ),
       ),
       debugShowCheckedModeBanner: false,
-      home:MyTabBar (),
+      home:MyTabBar(),
     );
   }
 }

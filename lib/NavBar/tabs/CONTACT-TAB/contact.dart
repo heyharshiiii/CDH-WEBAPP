@@ -3,6 +3,8 @@ import 'package:cdh2/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../responsive.dart';
+
 class Contact extends StatefulWidget {
   const Contact({super.key, required this.onContributeSelected});
   final Function onContributeSelected;
@@ -124,36 +126,7 @@ class _ContactState extends State<Contact> {
                           SizedBox(
                             height: 10,
                           ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "Wanna Contribute to the community?",
-                                  style: TextStyle(
-                                      color: Colors.white38, fontSize: 14),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    widget.onContributeSelected();
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "CONTRIBUTE ",
-                                        style: fontTabBar2.copyWith(
-                                            color: kPrimaryColor),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Icon(
-                                        Icons.arrow_forward_sharp,
-                                        color: Colors.white60,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ])
+                          buttonContribute(widget: widget)
                         ],
                       )),
                 ),
@@ -161,5 +134,113 @@ class _ContactState extends State<Contact> {
             )),
       ),
     );
+  }
+}
+
+class buttonContribute extends StatelessWidget {
+  const buttonContribute({
+    super.key,
+    required this.widget,
+  });
+
+  final Contact widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+        builder: (context,constraints){
+          if(Responsive.isMobile(context))
+          {
+            return buttonContributeMobile(widget: widget,);
+          }
+          else {
+            return buttonContributeDesktop(widget: widget,);
+          }
+        }
+  );
+  }
+}
+
+class buttonContributeDesktop extends StatelessWidget {
+  const buttonContributeDesktop({
+    super.key,
+    required this.widget,
+  });
+
+  final Contact widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            "Wanna Contribute to the community?",
+            style: TextStyle(
+                color: Colors.white38, fontSize: 14),
+          ),
+          InkWell(
+            onTap: () {
+              widget.onContributeSelected();
+            },
+            child: Row(
+              children: [
+                Text(
+                  "CONTRIBUTE ",
+                  style: fontTabBar2.copyWith(
+                      color: kPrimaryColor),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Icon(
+                  Icons.arrow_forward_sharp,
+                  color: Colors.white60,
+                ),
+              ],
+            ),
+          ),
+        ]);
+  }
+}
+class buttonContributeMobile extends StatelessWidget {
+   const buttonContributeMobile({
+    super.key,
+    required this.widget,
+  });
+
+  final Contact widget;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            "Wanna Contribute to the community?",
+            style: TextStyle(
+                color: Colors.white38, fontSize: 14),
+          ),
+          InkWell(
+            onTap: () {
+              widget.onContributeSelected();
+            },
+            child: Row(
+              children: [
+                Text(
+                  "CONTRIBUTE ",
+                  style: fontTabBar2.copyWith(
+                      color: kPrimaryColor),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Icon(
+                  Icons.arrow_forward_sharp,
+                  color: Colors.white60,
+                ),
+              ],
+            ),
+          ),
+        ]);
   }
 }

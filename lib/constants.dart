@@ -46,15 +46,14 @@ final fontTabBar1 = GoogleFonts.nanumPenScript(
     color: Colors.white,
     fontWeight: FontWeight.bold);
 final fontTabBar2 = GoogleFonts.nanumPenScript(
-    fontSize: 18.0,
-    letterSpacing: 1.0,
+    fontSize: 14.0,
     color: Colors.white,
-    fontWeight: FontWeight.bold);
+    fontWeight: FontWeight.bold
+    );
 final fontTabBar3 = GoogleFonts.nanumPenScript(
-    fontSize: 8.0,
-    letterSpacing: 1.0,
+    fontSize: 2.0,
     color: Colors.white,
-    fontWeight: FontWeight.bold);
+);
 
 final contentTitle = GoogleFonts.ebGaramond(
     fontSize: 24.0,
@@ -90,7 +89,20 @@ final teamFontName=GoogleFonts.merriweather(
     letterSpacing: 1.0,
     color: Colors.white,
     fontWeight: FontWeight.w500
+    ); 
+    final teamFontName2=GoogleFonts.merriweather(
+  fontSize: 18.0,
+    letterSpacing: 1.0,
+    color: Colors.white,
+    fontWeight: FontWeight.bold
+    );
+ final teamFontJob2=GoogleFonts.merriweather(
+  fontSize: 13.0,
+    letterSpacing: 1.0,
+    color: Colors.white,
+    fontWeight: FontWeight.w500
     );   
+  
 
  const cardColor2 = LinearGradient(
     begin: Alignment.topLeft,

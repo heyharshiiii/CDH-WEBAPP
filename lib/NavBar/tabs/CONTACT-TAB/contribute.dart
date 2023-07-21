@@ -3,6 +3,8 @@ import 'package:cdh2/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../responsive.dart';
+
 class Contribute extends StatefulWidget {
   const Contribute({super.key, required this.onContactSelected});
   final Function onContactSelected;
@@ -90,7 +92,7 @@ class _ContributeState extends State<Contribute> {
                             decoration: InputDecoration(
                                 hintText: 'Year/Alumni',
                                 labelText: 'Year/Alumni',
-                                suffixIcon: Icon(Icons.phone)),
+                                suffixIcon: Icon(Icons.person_4)),
                           ),
                           SizedBox(
                             height: 8,
@@ -109,35 +111,7 @@ class _ContributeState extends State<Contribute> {
                           SizedBox(
                             height: 10,
                           ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "Wanna Contact us?",
-                                  style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 89, 88, 88),
-                                      fontSize: 14),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    widget.onContactSelected();
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "CONTACT US ",
-                                        style: fontTabBar2.copyWith(
-                                            color: kPrimaryColor),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Icon(Icons.arrow_forward_sharp),
-                                    ],
-                                  ),
-                                ),
-                              ])
+                          buttonContact(widget: widget)
                         ],
                       )),
                 ),
@@ -147,3 +121,112 @@ class _ContributeState extends State<Contribute> {
     );
   }
 }
+
+class buttonContact extends StatelessWidget {
+  const buttonContact({
+    super.key,
+    required this.widget,
+  });
+
+  final Contribute widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+        builder: (context,constraints){
+          if(Responsive.isMobile(context))
+          {
+            return buttonContactMobile(widget: widget,);
+          }
+          else {
+            return buttonContactDesktop(widget: widget,);
+          }
+        }
+  );;
+  }
+}
+class buttonContactDesktop extends StatelessWidget {
+  const buttonContactDesktop({
+    super.key,
+    required this.widget,
+  });
+
+  final Contribute widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            "Wanna Contact us?",
+            style: TextStyle(
+                color:
+                    const Color.fromARGB(255, 89, 88, 88),
+                fontSize: 14),
+          ),
+          InkWell(
+            onTap: () {
+              widget.onContactSelected();
+            },
+            child: Row(
+              children: [
+                Text(
+                  "CONTACT US ",
+                  style: fontTabBar2.copyWith(
+                      color: kPrimaryColor),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Icon(Icons.arrow_forward_sharp),
+              ],
+            ),
+          ),
+        ]);
+  }
+}
+
+class buttonContactMobile extends StatelessWidget {
+  const buttonContactMobile({
+    super.key,
+    required this.widget,
+  });
+
+  final Contribute widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            "Wanna Contact us?",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                color:
+                    const Color.fromARGB(255, 89, 88, 88),
+                fontSize: 14),
+          ),
+          InkWell(
+            onTap: () {
+              widget.onContactSelected();
+            },
+            child: Row(
+              children: [
+                Text(
+                  "CONTACT US ",
+                  style: fontTabBar2.copyWith(
+                      color: kPrimaryColor),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Icon(Icons.arrow_forward_sharp),
+              ],
+            ),
+          ),
+        ]);
+  }
+}
+
