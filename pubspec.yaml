@@ -41,6 +41,7 @@ dependencies:
   url_launcher: ^6.1.12
   fancy_containers: ^0.0.5
   carousel_slider: ^4.2.1
+  firebase_core: ^2.15.0
 
 dev_dependencies:
   flutter_test:
