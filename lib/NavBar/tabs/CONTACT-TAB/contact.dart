@@ -122,7 +122,33 @@ class _ContactState extends State<Contact> {
                           SizedBox(
                             height: 8,
                           ),
-                          actionButton("SEND!"),
+                          InkWell(
+                            onTap: (){
+                              
+                            },
+                            child: Container(
+                              height: 50,
+                              width: double.infinity / 2,
+                              decoration: BoxDecoration(
+                                  color: kPrimaryColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: kPrimaryColor.withOpacity(0.2),
+                                      spreadRadius: 4,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              child: Center(
+                                child: Text(
+                                  "SEND",
+                                  style: fontTabBar1,
+                                ),
+                              ),
+                            ),
+                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -147,17 +173,17 @@ class buttonContribute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (context,constraints){
-          if(Responsive.isMobile(context))
-          {
-            return buttonContributeMobile(widget: widget,);
-          }
-          else {
-            return buttonContributeDesktop(widget: widget,);
-          }
-        }
-  );
+    return LayoutBuilder(builder: (context, constraints) {
+      if (Responsive.isMobile(context)) {
+        return buttonContributeMobile(
+          widget: widget,
+        );
+      } else {
+        return buttonContributeDesktop(
+          widget: widget,
+        );
+      }
+    });
   }
 }
 
@@ -171,40 +197,37 @@ class buttonContributeDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            "Wanna Contribute to the community?",
-            style: TextStyle(
-                color: Colors.white38, fontSize: 14),
-          ),
-          InkWell(
-            onTap: () {
-              widget.onContributeSelected();
-            },
-            child: Row(
-              children: [
-                Text(
-                  "CONTRIBUTE ",
-                  style: fontTabBar2.copyWith(
-                      color: kPrimaryColor),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Icon(
-                  Icons.arrow_forward_sharp,
-                  color: Colors.white60,
-                ),
-              ],
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      Text(
+        "Wanna Contribute to the community?",
+        style: TextStyle(color: Colors.white38, fontSize: 14),
+      ),
+      InkWell(
+        onTap: () {
+          widget.onContributeSelected();
+        },
+        child: Row(
+          children: [
+            Text(
+              "CONTRIBUTE ",
+              style: fontTabBar2.copyWith(color: kPrimaryColor),
             ),
-          ),
-        ]);
+            SizedBox(
+              width: 8,
+            ),
+            Icon(
+              Icons.arrow_forward_sharp,
+              color: Colors.white60,
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 }
+
 class buttonContributeMobile extends StatelessWidget {
-   const buttonContributeMobile({
+  const buttonContributeMobile({
     super.key,
     required this.widget,
   });
@@ -212,35 +235,31 @@ class buttonContributeMobile extends StatelessWidget {
   final Contact widget;
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            "Wanna Contribute to the community?",
-            style: TextStyle(
-                color: Colors.white38, fontSize: 14),
-          ),
-          InkWell(
-            onTap: () {
-              widget.onContributeSelected();
-            },
-            child: Row(
-              children: [
-                Text(
-                  "CONTRIBUTE ",
-                  style: fontTabBar2.copyWith(
-                      color: kPrimaryColor),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Icon(
-                  Icons.arrow_forward_sharp,
-                  color: Colors.white60,
-                ),
-              ],
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      Text(
+        "Wanna Contribute to the community?",
+        style: TextStyle(color: Colors.white38, fontSize: 14),
+      ),
+      InkWell(
+        onTap: () {
+          widget.onContributeSelected();
+        },
+        child: Row(
+          children: [
+            Text(
+              "CONTRIBUTE ",
+              style: fontTabBar2.copyWith(color: kPrimaryColor),
             ),
-          ),
-        ]);
+            SizedBox(
+              width: 8,
+            ),
+            Icon(
+              Icons.arrow_forward_sharp,
+              color: Colors.white60,
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 }

@@ -28,7 +28,6 @@ List<ImageClass> president=[
   ImageClass(img: CircleAvatar(backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 75,), name: Text("data",style: teamFontName,), job: Text("xyz",style: teamFontJob,)),
   ImageClass(img: CircleAvatar(backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 75,), name: Text("data",style: teamFontName,), job: Text("xyz",style: teamFontJob,)),
   ImageClass(img: CircleAvatar(backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 75,), name: Text("data",style: teamFontName,), job: Text("xyz",style: teamFontJob,)),
-  ImageClass(img: CircleAvatar(backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 75,), name: Text("data",style: teamFontName,), job: Text("xyz",style: teamFontJob,))
 
 ];
 List<ImageClass> presidentMobile=[

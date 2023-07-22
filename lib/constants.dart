@@ -56,7 +56,7 @@ final fontTabBar3 = GoogleFonts.nanumPenScript(
 );
 
 final contentTitle = GoogleFonts.ebGaramond(
-    fontSize: 24.0,
+    fontSize: 20.0,
     letterSpacing: 1.0,
     color: Color.fromARGB(255, 109, 85, 232),
     fontWeight: FontWeight.bold);

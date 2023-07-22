@@ -107,7 +107,33 @@ class _ContributeState extends State<Contribute> {
                           SizedBox(
                             height: 8,
                           ),
-                          actionButton("SEND!"),
+                          InkWell(
+                            onTap: (){
+                              
+                            },
+                            child: Container(
+                              height: 50,
+                              width: double.infinity / 2,
+                              decoration: BoxDecoration(
+                                  color: kPrimaryColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: kPrimaryColor.withOpacity(0.2),
+                                      spreadRadius: 4,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              child: Center(
+                                child: Text(
+                                  "SEND",
+                                  style: fontTabBar1,
+                                ),
+                              ),
+                            ),
+                          ),
                           SizedBox(
                             height: 10,
                           ),

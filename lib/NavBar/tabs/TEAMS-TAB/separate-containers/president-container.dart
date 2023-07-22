@@ -42,7 +42,7 @@ class _presidentDesktopState extends State<presidentDesktop> {
     return Padding(
       padding: const EdgeInsets.all(50.0),
       child: Container(
-        height: screenSize.height*0.8,
+        height: screenSize.height*0.9,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: cardColor2,
