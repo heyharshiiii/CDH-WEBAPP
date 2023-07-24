@@ -1,3 +1,4 @@
+import 'package:cdh2/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -13,19 +14,25 @@ class InclusionAndDiversity extends StatelessWidget {
        backgroundColor: Color.fromARGB(255, 114, 152, 255),
         body: SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        Responsive.isMobile(context)? SizedBox(height: 30.0,): SizedBox(height: 10.0,),      
          Container(
-                    child:  ShaderMask(
-              shaderCallback: (Rect rect){
-                return cardColor2.createShader(rect);
-              },
-              child: Text("INCLUSIVITY AND DIVERSIFICATION",
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    child: Text("INCLUSIVITY AND DIVERSIFICATION",
+                    textAlign: TextAlign.center,
+                    style: Responsive.isMobile(context)
+                    ?
+                     Theme.of(context).textTheme.titleLarge!.copyWith(
+                      decoration: TextDecoration.underline,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 2.0
-                    ),
+                    ): Theme.of(context).textTheme.displayMedium!.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      letterSpacing: 2.0)
+                    
                         ),
-                    ),
+                    
                   ),
         SizedBox(
           height: 20,

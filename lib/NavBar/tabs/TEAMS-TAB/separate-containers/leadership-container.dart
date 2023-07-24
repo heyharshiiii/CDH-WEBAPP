@@ -45,7 +45,8 @@ class _leadersDesktopState extends State<leadersDesktop> {
     return Padding(
       padding: const EdgeInsets.all(50.0),
       child: Container(
-        height: screenSize.height,
+        width: screenSize.width*0.7,
+        height: screenSize.height*0.6,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: cardColor2,
@@ -54,49 +55,52 @@ class _leadersDesktopState extends State<leadersDesktop> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("LEADERSHIP",style: contentTitle.copyWith(color: Colors.white,fontSize: 30),),
-            Text("The Captains Of Our Ship",style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white60),),
+            Text("The Captain Of Our Ship",style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white60),),
             SizedBox(
-              height: 10.0,
+              height: 30.0,
             ),
             Container(
               color: Colors.transparent,
               child: Column(children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 80,
+                  backgroundImage: AssetImage('assets/images/maam2.jpg'),radius: 90,
                 ),
-                Text("Scarlett Johnshon",style: teamFontName,),
-                Text("Faculty Advisor",style: teamFontJob,)
+                   SizedBox(
+              height: 30.0,
+            ),
+                Text("ANUKAMPA BEHERA",style: teamFontName,),
+                
               ]),
             ),
             SizedBox(
               height: 20.0,
             ),
-            GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemCount: leadership.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        color: Colors.transparent,
-                        child: Column(children: [
-                          leadership[index].img,
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          leadership[index].name,
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          leadership[index].job
-                        ]),
-                      )
-                    ],
-                  );
-                })
+            // GridView.builder(
+            //     shrinkWrap: true,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         crossAxisCount: 4),
+            //     itemCount: leadership.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //         children: [
+            //           Container(
+            //             color: Colors.transparent,
+            //             child: Column(children: [
+            //               leadership[index].img,
+            //               SizedBox(
+            //                 height: 5.0,
+            //               ),
+            //               leadership[index].name,
+            //               SizedBox(
+            //                 height: 5.0,
+            //               ),
+            //               leadership[index].job
+            //             ]),
+            //           )
+            //         ],
+            //       );
+            //     })
           ],
         ),
       ),
@@ -115,9 +119,10 @@ class _leadersMobileState extends State<leadersMobile> {
   Widget build(BuildContext context) {
      var screenSize = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: screenSize.height*0.9,
+        width: screenSize.width*0.8,
+        height: screenSize.height*0.4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: cardColor2,
@@ -126,7 +131,7 @@ class _leadersMobileState extends State<leadersMobile> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("LEADERSHIP",style: contentTitle.copyWith(color: Colors.white,fontSize: 30),),
-            Text("The Captains Of Our Ship",style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white60),),
+            Text("The Captain Of Our Ship",style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white60),),
             SizedBox(
               height: 10.0,
             ),
@@ -134,44 +139,45 @@ class _leadersMobileState extends State<leadersMobile> {
               color: Colors.transparent,
               child: Column(children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/profile.jfif'),radius: 80,
+                  backgroundImage: AssetImage('assets/images/maam2.jpg'),radius: 80,
                 ),
-                Text("Scarlett Johnshon",style: teamFontName,),
-                Text("Faculty Advisor",style: teamFontJob,)
-              ]),
-            ),
-            SizedBox(
+                 SizedBox(
               height: 20.0,
             ),
-            GridView.builder(
-              physics: ScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemCount: leadership.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        color: Colors.transparent,
-                        child: Column(children: [
-                          leadershipMobile[index].img,
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          leadershipMobile[index].name,
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          leadershipMobile[index].job,
+                Text("ANUKAMPA BEHERA",style: teamFontName,),
+                // Text("Faculty Advisor",style: teamFontJob,)
+              ]),
+            ),
+           
+            // GridView.builder(
+            //   physics: ScrollPhysics(),
+            //     shrinkWrap: true,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         crossAxisCount: 2),
+            //     itemCount: leadership.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //         children: [
+            //           Container(
+            //             color: Colors.transparent,
+            //             child: Column(children: [
+            //               leadershipMobile[index].img,
+            //               SizedBox(
+            //                 height: 5.0,
+            //               ),
+            //               leadershipMobile[index].name,
+            //               SizedBox(
+            //                 height: 5.0,
+            //               ),
+            //               leadershipMobile[index].job,
                            
                           
-                        ]),
-                      )
-                    ],
-                  );
-                })
+            //             ]),
+            //           )
+            //         ],
+            //       );
+            //     })
           ],
         ),
       ),

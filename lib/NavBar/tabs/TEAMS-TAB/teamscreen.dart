@@ -23,27 +23,24 @@ class _TeamsScreenState extends State<TeamsScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(defaultPadding),
+            padding: const EdgeInsets.all(defaultPadding/2),
             child: Container(
-              child: ShaderMask(
-                shaderCallback: (Rect rect) {
-                  return graddd.createShader(rect);
-                },
-                child: Text(
+              
+              child: Text(
                   " MEET THE CDH TEAM !",
                   textAlign: TextAlign.center,
                   style: Responsive.isDesktop(context)?
                   Theme.of(context).textTheme.displaySmall!.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: color1,
                       letterSpacing: 2.0)
                       :  Theme.of(context).textTheme.displaySmall!.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 25.0,
-                      color: Colors.white,
+                      color: color1,
                       letterSpacing: 1.0)
                 ),
-              ),
+              
             ),
           ),
           Text(
@@ -58,14 +55,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
             height: 20,
           ),
           LeadershipContainer(),
-          SizedBox(
-            height: 20,
-          ),
-          PresidentContainer(),
-          SizedBox(
-            height: 20,
-          ),
-          TechnicalContainer(),
+         
           SizedBox(
             height: 20,
           ),

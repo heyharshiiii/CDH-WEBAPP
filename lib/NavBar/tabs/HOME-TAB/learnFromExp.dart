@@ -1,3 +1,4 @@
+import 'package:cdh2/constants.dart';
 import 'package:fancy_containers/fancy_containers.dart';
 import 'package:flutter/material.dart';
 
@@ -42,8 +43,8 @@ class fancyDesktop extends StatelessWidget {
                    subtitleColor: Colors.white,
                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
                    padding: EdgeInsets.all(12),
-                   color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),    
+                   color1: color2,  
+                   color2: color3,    
                    subtitle: "The wise words from experienced tech-leads\nbrought just for you!"
                  ),  
                ),  
@@ -58,8 +59,8 @@ class fancyDesktop extends StatelessWidget {
                    subtitleColor: Colors.white,
                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
                    padding: EdgeInsets.all(12),
-                  color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),    
+                 color1: color2,  
+                   color2: color3,       
                    subtitle: "Never miss a chance to get the latest updates for opportunities! "
                  ),  
                ),  
@@ -74,8 +75,8 @@ class fancyDesktop extends StatelessWidget {
                    subtitleColor: Colors.white,
                    subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
                    padding: EdgeInsets.all(12),
-                   color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),  
+                   color1: color2,  
+                   color2: color3,    
                    subtitle: "Every tuesday we bring you the lastest buzz from the world of technology! "
                  ),  
                ),       
@@ -99,10 +100,9 @@ class fancyMobile extends StatelessWidget {
                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
                    textColor: Colors.black,
                    subtitleColor: Colors.white,
-                   subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
-                   padding: EdgeInsets.all(12),
-                   color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),    
+                  
+                    color1: color2,  
+                   color2: color3,    
                    subtitle: "The wise words from experienced tech-leads\nbrought just for you!"
                  ),  
                ),  
@@ -115,10 +115,10 @@ class fancyMobile extends StatelessWidget {
                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
                    textColor: Colors.white,
                    subtitleColor: Colors.white,
-                   subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
+                 
                    padding: EdgeInsets.all(12),
-                  color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),    
+                  color1: color2,  
+                   color2: color3,       
                    subtitle: "Never miss a chance to get the latest updates for opportunities! "
                  ),  
                ),  
@@ -131,15 +131,15 @@ class fancyMobile extends StatelessWidget {
                    titleStyle:TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18.0),
                    textColor: Colors.white,
                    subtitleColor: Colors.white,
-                   subtitleStyle: TextStyle(fontStyle: FontStyle.italic),
+                  
                    padding: EdgeInsets.all(12),
-                   color1: Color.fromARGB(255, 217, 189, 244),  
-                   color2: Color.fromARGB(255, 183, 232, 255),  
+                    color1: color2,  
+                   color2: color3,    
                    subtitle: "Every tuesday we bring you the lastest buzz from the world of technology! "
                  ),  
                ),       
                ]
-         );;
+         );
   }
 }
 

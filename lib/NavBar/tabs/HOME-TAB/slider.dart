@@ -11,11 +11,15 @@ class SliderScreen extends StatefulWidget {
 
 class _SliderScreenState extends State<SliderScreen> {
   List imageList = [
-    {"id": 1, "image_path": 'assets/slider/s1.jfif'},
-    {"id": 2, "image_path": 'assets/slider/s2.png'},
-    {"id": 3, "image_path": 'assets/slider/s3.png'},
+    // {"id": 1, "image_path": 'assets/slider/s1.jfif'},
+    {"id": 1, "image_path": 'assets/slider/s2.png'},
+    // {"id": 3, "image_path": 'assets/slider/s3.png'},
     {"id": 2, "image_path": 'assets/slider/s4.jfif'},
-    {"id": 3, "image_path": 'assets/slider/s5.jfif'},
+    // {"id": 3, "image_path": 'assets/slider/s5.jfif'},
+    {"id": 3, "image_path": 'assets/slider/ss1.jfif'},
+    {"id": 4, "image_path": 'assets/slider/ss2.jfif'},
+    {"id": 5, "image_path": 'assets/slider/ss3.jfif'},
+    {"id": 6, "image_path": 'assets/slider/ss4.png'},
 
   ];
   final CarouselController carouselController = CarouselController();

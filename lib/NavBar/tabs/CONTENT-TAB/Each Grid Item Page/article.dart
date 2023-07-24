@@ -2,6 +2,7 @@ import 'package:cdh2/constants.dart';
 import 'package:cdh2/footer.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../responsive.dart';
 import 'my-container.dart';
 
 class Article extends StatelessWidget {
@@ -14,19 +15,25 @@ class Article extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 114, 152, 255),
         body: SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+         Responsive.isMobile(context)? SizedBox(height: 30.0,): SizedBox(height: 10.0,),      
          Container(
-                    child:  ShaderMask(
-              shaderCallback: (Rect rect){
-                return cardColor2.createShader(rect);
-              },
-              child: Text("ARTICLES",
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    child: Text("ARTICLES",
+                    textAlign: TextAlign.center,
+                    style: Responsive.isMobile(context)
+                    ?
+                     Theme.of(context).textTheme.titleLarge!.copyWith(
+                      decoration: TextDecoration.underline,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 2.0
-                    ),
+                    ): Theme.of(context).textTheme.displayMedium!.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      letterSpacing: 2.0)
+                    
                         ),
-                    ),
+                    
                   ),
         SizedBox(
           height: 20,

@@ -1,9 +1,11 @@
 import 'package:cdh2/NavBar/tabs/CONTACT-TAB/action-button.dart';
 import 'package:cdh2/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:get/get.dart';
 import '../../../responsive.dart';
+import '../../../utils.dart';
 
 class Contact extends StatefulWidget {
   const Contact({super.key, required this.onContributeSelected});
@@ -13,6 +15,13 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  final _nameController = new TextEditingController();
+  final _emailController = new TextEditingController();
+  final _phone_numberController = new TextEditingController();
+ final _year_branchController = new TextEditingController();
+  final fireStore = FirebaseFirestore.instance.collection("contact");
+  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -66,21 +75,33 @@ class _ContactState extends State<Contact> {
                           SizedBox(
                             height: 15,
                           ),
-                          TextFormField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                                hintText: 'Full Name',
-                                labelText: 'Full Name',
-                                labelStyle: labelContri,
-                                suffixIcon: Icon(
-                                  Icons.person,
-                                  color: Colors.white60,
-                                )),
-                          ),
-                          SizedBox(
+                          Form(
+                            child: ListView(
+                              children:[
+                                TextFormField(
+                                validator: (value){
+                                  if(value==null||value.isEmpty)
+                                  {
+                                    return 'Please enter Full Name';
+                                  }
+                                  return null;
+                                },
+                                controller: _nameController,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    hintText: 'Full Name',
+                                    labelText: 'Full Name',
+                                    labelStyle: labelContri,
+                                    suffixIcon: Icon(
+                                      Icons.person,
+                                      color: Colors.white60,
+                                    )),
+                              ),
+                                SizedBox(
                             height: 8,
                           ),
                           TextFormField(
+                            controller: _emailController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 hintText: 'Email',
@@ -93,8 +114,8 @@ class _ContactState extends State<Contact> {
                           ),
                           SizedBox(
                             height: 8,
-                          ),
-                          TextFormField(
+                          ), TextFormField(
+                            controller: _phone_numberController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 hintText: 'Contact No.',
@@ -109,6 +130,7 @@ class _ContactState extends State<Contact> {
                             height: 8,
                           ),
                           TextFormField(
+                            controller: _year_branchController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 hintText: 'Year & Branch',
@@ -122,33 +144,38 @@ class _ContactState extends State<Contact> {
                           SizedBox(
                             height: 8,
                           ),
-                          InkWell(
-                            onTap: (){
-                              
-                            },
-                            child: Container(
-                              height: 50,
-                              width: double.infinity / 2,
-                              decoration: BoxDecoration(
-                                  color: kPrimaryColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kPrimaryColor.withOpacity(0.2),
-                                      spreadRadius: 4,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  "SEND",
-                                  style: fontTabBar1,
-                                ),
-                              ),
+                          ElevatedButton(
+                              onPressed: () {
+                                setState(() {});
+                                String id = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString();
+                                fireStore.doc(id).set({
+                                  'name': _nameController.text.toString(),
+                                  'email': _emailController.text.toString(),
+                                  'contact-no.':
+                                      _phone_numberController.text.toString(),
+                                  'year/branch':
+                                      _year_branchController.text.toString(),
+                                  'id': id
+                                }).then((value) {
+                                  Utils().toastMessage("SUBMISSION SUCCESSFUL !");
+                                  // Get.snackbar("Congratulations!", "Submission Succesful! ❤️",
+                                  //     colorText: Colors.white,
+                                  //    backgroundColor: Color.fromARGB(255, 105, 66, 170),
+
+                                  //     snackPosition: SnackPosition.BOTTOM);
+                                }).onError((error, stackTrace) {
+                                  Utils().toastMessage(error.toString());
+                                });
+                              },
+                              child: Text('send')),
+                              ]
+                               
                             ),
                           ),
+                        
+                         
                           SizedBox(
                             height: 10,
                           ),

@@ -1,9 +1,11 @@
 import 'package:cdh2/NavBar/tabs/CONTACT-TAB/action-button.dart';
 import 'package:cdh2/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../responsive.dart';
+import '../../../utils.dart';
 
 class Contribute extends StatefulWidget {
   const Contribute({super.key, required this.onContactSelected});
@@ -13,7 +15,16 @@ class Contribute extends StatefulWidget {
 }
 
 class _ContributeState extends State<Contribute> {
-  @override
+  final _NameController=new TextEditingController();
+  final _EmailController=new TextEditingController();
+  final _TypeOfContriController=new TextEditingController();
+  final _yearOrAlumniController=new TextEditingController();
+  final firestore1= FirebaseFirestore.instance.collection('contributers');
+//   TextEditingController _nameController = new TextEditingController();
+//   TextEditingController _emailController = new TextEditingController();
+//   TextEditingController _typeOfContriController = new TextEditingController();
+//  TextEditingController _year_alumniController = new TextEditingController();
+//   final fireStore1 = FirebaseFirestore.instance.collection('contributers');
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
@@ -68,6 +79,7 @@ class _ContributeState extends State<Contribute> {
                             height: 15,
                           ),
                           TextFormField(
+                            controller: _NameController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 hintText: 'Full Name',
@@ -78,6 +90,7 @@ class _ContributeState extends State<Contribute> {
                             height: 8,
                           ),
                           TextFormField(
+                            controller: _EmailController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 hintText: 'Email',
@@ -88,6 +101,7 @@ class _ContributeState extends State<Contribute> {
                             height: 8,
                           ),
                           TextFormField(
+                            controller: _yearOrAlumniController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 hintText: 'Year/Alumni',
@@ -98,6 +112,7 @@ class _ContributeState extends State<Contribute> {
                             height: 8,
                           ),
                           TextFormField(
+                            controller:_TypeOfContriController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 hintText: 'Type Of Contribution',
@@ -107,33 +122,35 @@ class _ContributeState extends State<Contribute> {
                           SizedBox(
                             height: 8,
                           ),
-                          InkWell(
-                            onTap: (){
+                           ElevatedButton(
+                              onPressed: () {
+                                setState(() {});
+                                String id = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString();
+                               firestore1.doc(id).set({
+                                  'name1': _NameController.text.toString(),
+                                  'email1': _EmailController.text.toString(),
+                                  'type of contribution.':
+                                      _TypeOfContriController.text.toString(),
+                                  'year/alumni':
+                                      _yearOrAlumniController.text.toString(),
+                                  'id1': id,
+                                  
+                                }).then((value) {
+                                  Utils().toastMessage("SUBMISSION SUCCESSFUL !");
+                                  // Get.snackbar("Congratulations!", "Submission Succesful! ❤️",
+                                  //     colorText: Colors.white,
+                                  //    backgroundColor: Color.fromARGB(255, 105, 66, 170),
+
+                                  //     snackPosition: SnackPosition.BOTTOM);
+                                }).onError((error, stackTrace) {
+                                  Utils().toastMessage(error.toString());
+                                });
+                              },
                               
-                            },
-                            child: Container(
-                              height: 50,
-                              width: double.infinity / 2,
-                              decoration: BoxDecoration(
-                                  color: kPrimaryColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kPrimaryColor.withOpacity(0.2),
-                                      spreadRadius: 4,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  "SEND",
-                                  style: fontTabBar1,
-                                ),
-                              ),
-                            ),
-                          ),
+                              child: Text('send')),
+                              
                           SizedBox(
                             height: 10,
                           ),

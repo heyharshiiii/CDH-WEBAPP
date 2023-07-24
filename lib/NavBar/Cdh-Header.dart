@@ -36,7 +36,7 @@ class DesktopHeader extends StatelessWidget {
       width: double.infinity,
       height: 70,
       decoration: BoxDecoration(
-       gradient: tabbarcolor2),
+       color: color1),
         
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +69,7 @@ class MobileHeader extends StatelessWidget {
       width: double.infinity,
       height: ScreenSize.height*0.15,
       decoration: BoxDecoration(
-       gradient: tabbarcolor2),
+       color: color1),
         
       child:
       Column(

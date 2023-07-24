@@ -90,17 +90,17 @@ class homeandintroMobile extends StatelessWidget {
       child: Column( 
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset("assets/images/team1.jfif",height: 300,width: 200,),
+          Image.asset("assets/images/team1.jfif",height: 200,width: 200,),
           SizedBox(width: defaultPadding/2,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("\"We can only see a short distance ahead,but we can see plenty there \nthat needs to be done.\"",
+              Text("\"We can only see a short distance\n ahead, but we can see plenty there \nthat needs to be done.\"",
               textAlign:TextAlign.center ,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 color: bodyTextColor,
-                fontSize: 18.0,
+                fontSize: 17.0,
                 letterSpacing: 1.5
               ),
               ),
@@ -119,7 +119,7 @@ class homeandintroMobile extends StatelessWidget {
                 child: Container(
                   
                   child: Text("CDH is an official Club declared in the Year 2020 amidst of Covid-19 pandemic.\nThe club is organised by the ITER's placement department and the SOA's Aluminis.\nWe come up with the ideas and opportunies for those students who are good at\ncoding and for those who aren't. This club is basically meant for all those ITERians\n who are willing to grasp knowledge in the field of coding ,\naptitude/reasoning and all the placement stuffs.",
-                  textAlign: TextAlign.right,
+                  textAlign: TextAlign.left,
                   style: GoogleFonts.montserrat(
                     color: bodyTextColor,
                     letterSpacing: 0.7,

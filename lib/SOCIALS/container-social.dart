@@ -1,3 +1,4 @@
+import 'package:cdh2/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../responsive.dart';
@@ -38,15 +39,7 @@ class socialsDeskop extends StatelessWidget {
           height: 200,
           width: 40,
          decoration: BoxDecoration(
-      gradient: LinearGradient(
-          colors: [
-           Color.fromARGB(255, 73, 82, 157),
-             Color.fromARGB(255, 181, 136, 206),
-          ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
-          tileMode: TileMode.clamp),
+      color: color2
     ),
           child: Socials(),
        ),
@@ -55,7 +48,8 @@ class socialsDeskop extends StatelessWidget {
   }
 }
 class socialsMobile extends StatelessWidget {
-  const socialsMobile({super.key});
+  socialsMobile({super.key});
+  bool isVisible=true;
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +62,7 @@ class socialsMobile extends StatelessWidget {
           height: ScreenSize.height*0.3,
           width: 40,
          decoration: BoxDecoration(
-      gradient: LinearGradient(
-          colors: [
-           Color.fromARGB(255, 73, 82, 157),
-             Color.fromARGB(255, 181, 136, 206),
-          ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
-          tileMode: TileMode.clamp),
+      color: color2
     ),
           child: Socials(),
        ),

@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const color1=Color(0xFF4A55A2);
+const color2=Color(0xFF7895CB);
+const color3=Color(0xFFA0BFE0);
+const color4=Color(0xFFC5DFF8);
+
+
+
 const darkColor = Color(0xFF191923);
 const bodyTextColor = Color.fromARGB(255, 79, 79, 83);
 const bgColor = Color(0xFF1E1E28);
@@ -40,17 +47,17 @@ const tabbarcolor2 = LinearGradient(
       Color.fromARGB(255, 16, 23, 73),
       Color.fromARGB(255, 131, 68, 165),
     ]);
-final fontTabBar1 = GoogleFonts.nanumPenScript(
+final fontTabBar1 = GoogleFonts.lato(
     fontSize: 24.0,
     letterSpacing: 2.0,
     color: Colors.white,
     fontWeight: FontWeight.bold);
-final fontTabBar2 = GoogleFonts.nanumPenScript(
+final fontTabBar2 = GoogleFonts.lato(
     fontSize: 14.0,
     color: Colors.white,
-    fontWeight: FontWeight.bold
+    fontWeight: FontWeight.w800
     );
-final fontTabBar3 = GoogleFonts.nanumPenScript(
+final fontTabBar3 = GoogleFonts.lato(
     fontSize: 2.0,
     color: Colors.white,
 );
@@ -58,12 +65,12 @@ final fontTabBar3 = GoogleFonts.nanumPenScript(
 final contentTitle = GoogleFonts.ebGaramond(
     fontSize: 20.0,
     letterSpacing: 1.0,
-    color: Color.fromARGB(255, 109, 85, 232),
+    color: color1,
     fontWeight: FontWeight.bold);
 final contentTitleMob = GoogleFonts.ebGaramond(
     fontSize: 18.0,
     letterSpacing: 1.0,
-    color: Color.fromARGB(255, 109, 85, 232),
+    color: color1,
     fontWeight: FontWeight.bold);
 
 enum Option { Contact, Contribute }

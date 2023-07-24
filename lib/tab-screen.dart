@@ -1,4 +1,5 @@
 import 'package:cdh2/NavBar/tabs/CONTACT-TAB/contactscreen.dart';
+import 'package:cdh2/NavBar/tabs/CONTACT-TAB/form.dart';
 import 'package:cdh2/NavBar/tabs/CONTENT-TAB/contentscreen.dart';
 import 'package:cdh2/NavBar/tabs/TEAMS-TAB/teamscreen.dart';
 import 'package:cdh2/NavBar/tabs/WRITES-TAB/writesscreen.dart';
@@ -21,7 +22,7 @@ class _MyTabBarState extends State<MyTabBar> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 4,
       child: Scaffold(
         body: Stack(
           children:[
@@ -33,7 +34,7 @@ class _MyTabBarState extends State<MyTabBar> {
             //////// THE TAB BAR //////////////
                 Container(
                   decoration: BoxDecoration(
-                    gradient: tabbarcolor1
+                   color: color1
                   ),
                   child: LayoutBuilder(
                     builder:((context, constraints) {
@@ -61,11 +62,11 @@ class _MyTabBarState extends State<MyTabBar> {
 
                             ContentScreen(),
 
-                            WritesScreen(),
+                            //WritesScreen(),
 
                             TeamsScreen(),
 
-                            ContactScreen()  
+                            UserFromScreen()  
                       ]
                   ),
                 )
@@ -101,7 +102,7 @@ class MobileTabBar extends StatelessWidget {
                   [
                      Tab(text: 'HOME',),
                       Tab(text: 'CONTENT'),
-                      Tab(text: 'WRITES',),
+                    //  Tab(text: 'WRITES',),
                       Tab(text: 'TEAMS'),
                       Tab(text: 'CONTACT',)
                   ]
@@ -119,12 +120,12 @@ class DesktopTabbar extends StatelessWidget {
                     labelColor: Colors.white,
                     labelStyle: fontTabBar1,
                     unselectedLabelColor: Colors.white38,
-                    indicatorColor: Colors.white,
+                    indicatorColor: color4,
                     tabs: 
                   [
                      Tab(text: 'HOME',),
                       Tab(text: 'CONTENT'),
-                      Tab(text: 'WRITES',),
+                    //  Tab(text: 'WRITES',),
                       Tab(text: 'TEAMS'),
                       Tab(text: 'CONTACT',)
                   ]
@@ -146,7 +147,7 @@ class MobileSmallTabbar extends StatelessWidget {
                   [
                      Tab(text: 'HOME',),
                       Tab(text: 'CONTENT'),
-                      Tab(text: 'WRITES',),
+                    //  Tab(text: 'WRITES',),
                       Tab(text: 'TEAMS'),
                       Tab(text: 'CONTACT',)
                   ]
